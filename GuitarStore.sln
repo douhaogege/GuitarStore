@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarStore", "GuitarStore\GuitarStore.csproj", "{FC752EA5-BBDC-453E-A30D-FA96CEE24467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.GuitarStore", "NHibernate.GuitarStore\NHibernate.GuitarStore.csproj", "{66C1EDA9-7214-4896-9450-5B7D6C8F3A65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.GuitarStore.Console", "NHibernate.GuitarStore.Console\NHibernate.GuitarStore.Console.csproj", "{A2E89123-7C24-464F-92DA-B0DDD818455B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC752EA5-BBDC-453E-A30D-FA96CEE24467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC752EA5-BBDC-453E-A30D-FA96CEE24467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC752EA5-BBDC-453E-A30D-FA96CEE24467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC752EA5-BBDC-453E-A30D-FA96CEE24467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C1EDA9-7214-4896-9450-5B7D6C8F3A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C1EDA9-7214-4896-9450-5B7D6C8F3A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C1EDA9-7214-4896-9450-5B7D6C8F3A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C1EDA9-7214-4896-9450-5B7D6C8F3A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E89123-7C24-464F-92DA-B0DDD818455B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E89123-7C24-464F-92DA-B0DDD818455B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E89123-7C24-464F-92DA-B0DDD818455B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E89123-7C24-464F-92DA-B0DDD818455B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
