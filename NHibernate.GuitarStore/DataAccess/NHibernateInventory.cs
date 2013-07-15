@@ -49,5 +49,31 @@ namespace NHibernate.GuitarStore.DataAccess
                 }
             }
         }
+
+        /// <summary>
+        /// 删除ITEM
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public bool DeleteInventoryItem(Guid Id)
+        {
+            using (ITransaction transaction = Session.BeginTransaction())
+            {
+                try
+                {
+                    IQuery query = Session.CreateQuery("from Inventory where Id = :Id")
+                    .SetGuid("Id", Id);
+                    Inventory inventory = query.List<Inventory>()[0];
+                    Session.Delete(inventory);
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    return false;
+                }
+            }
+        }
     }
 }

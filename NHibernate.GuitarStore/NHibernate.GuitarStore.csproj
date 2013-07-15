@@ -57,9 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Mapping\Guitar.hbm.xml" />
     <EmbeddedResource Include="Mapping\Inventory.hbm.xml">
       <SubType>Designer</SubType>

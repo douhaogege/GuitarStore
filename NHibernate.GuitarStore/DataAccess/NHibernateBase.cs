@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using log4net;
+using NHibernate.Event;
 
 namespace NHibernate.GuitarStore.DataAccess
 {
@@ -39,8 +40,12 @@ namespace NHibernate.GuitarStore.DataAccess
                 file.Close();
             }
             Configuration = LoadConfigurationFromFile();
+
+            //拦截器，输出HQL
             Configuration.SetInterceptor(new SQLInterceptor());
+            //日志记录
             log.Info("NHibernate config sucessful");
+
             return Configuration;
         }
         /// <summary>
@@ -50,6 +55,9 @@ namespace NHibernate.GuitarStore.DataAccess
         public void Initialize(string assembly)
         {
             Configuration = ConfigureNHibernate(assembly);
+            //注册监听事件
+            Configuration.EventListeners.PostDeleteEventListeners = new IPostDeleteEventListener[] { new AuditDeleteEvent() };
+
             SessionFactory = Configuration.BuildSessionFactory();
         }
 
@@ -70,7 +78,7 @@ namespace NHibernate.GuitarStore.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    log.Debug(ex.Message);
+                    //log.Debug(ex.Message);
                     return false;
                 }
             }
@@ -131,7 +139,7 @@ namespace NHibernate.GuitarStore.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    log.Info(ex.Message);
+                    //log.Info(ex.Message);
                     transaction.Rollback();
                     throw;
                 }
@@ -145,8 +153,21 @@ namespace NHibernate.GuitarStore.DataAccess
         {
             Utils.NHibernateGeneratedSQL = sql.ToString();
             Utils.QueryCounter++;
-            System.Diagnostics.Trace.WriteLine(sql);
+            System.Diagnostics.Trace.WriteLine("============"+sql);
             return sql;
         }
     }
+
+
+    #region 事件event
+
+    public class AuditDeleteEvent : IPostDeleteEventListener
+    {
+        private static ILog log = LogManager.GetLogger("NHBase.SQL");
+        public void OnPostDelete(PostDeleteEvent @event)
+        {
+            log.Info(@event.Id.ToString() + " 已经被删除.");
+        }
+    }
+    #endregion 
 }
